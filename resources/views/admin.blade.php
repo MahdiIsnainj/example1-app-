@@ -2,32 +2,53 @@
 <html>
 <head>
     <title>Data Dokumen Masuk</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style-admin.css') }}">
 </head>
-<body class="p-6 bg-gray-100">
 
-<h2 class="text-xl font-bold mb-4">Dokumen Masuk</h2>
+<body class="admin-body">
 
-<table class="w-full bg-white shadow rounded">
-    <tr class="bg-gray-200">
-        <th class="p-2">Nama</th>
-        <th class="p-2">Email</th>
-        <th class="p-2">Dokumen</th>
-        <th class="p-2">Download</th>
-    </tr>
+<div class="admin-container">
 
-@foreach ($docs as $d)
-<tr class="border-b">
-    <td class="p-2">{{ $d->name }}</td>
-    <td class="p-2">{{ $d->email }}</td>
-    <td class="p-2">{{ $d->doc_type }}</td>
-    <td class="p-2">
-        <a href="{{ asset('storage/'.$d->file_path) }}" class="text-blue-600" download>Download PDF</a>
-    </td>
-</tr>
-@endforeach
+    <h2 class="admin-title">📄 Dokumen Masuk</h2>
 
-</table>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Jenis Dokumen</th>
+                <th>File</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ($docs as $d)
+            <tr>
+                <td>{{ $d->name }}</td>
+                <td>{{ $d->email }}</td>
+                <td>{{ $d->doc_type }}</td>
+                <td>
+                    <a href="{{ asset('storage/'.$d->file_path) }}" class="btn-download" download>
+                        Download PDF
+                    </a>
+                </td>
+                <td>
+                    <form action="{{ route('document.delete', $d->id) }}" method="POST"
+                        onsubmit="return confirm('Hapus dokumen ini?')">
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="btn-delete">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+
+    </table>
+
+</div>
 
 </body>
 </html>

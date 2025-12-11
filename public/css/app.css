@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+/* Card container */
+.card {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 480px;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Title */
+.title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+    color: #333;
+}
+
+/* Success alert */
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Custom input */
+.input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    background: #f9fafb;
+    transition: 0.2s;
+}
+
+.input:focus {
+    border-color: #2563eb;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Textarea */
+.textarea {
+    height: 80px;
+}
+
+/* Label */
+.label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* File input */
+.file-input {
+    background: #f3f4f6;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-success {
+    display: block;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1e40af;
+}
+
+.btn-success {
+    background: #059669;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #047857;
+}
+
+/* Smooth animation */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to   {opacity: 1; transform: translateY(0);}
+}

@@ -1,0 +1,177 @@
+/* ===== Background Global Animasi ===== */
+body {
+    background: linear-gradient(135deg, #dfe9ff, #f8f9ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(91,122,255,0.4), transparent);
+    animation: float1 8s infinite alternate ease-in-out;
+    filter: blur(80px);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: -120px;
+    right: -120px;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0,200,150,0.35), transparent);
+    animation: float2 9s infinite alternate ease-in-out;
+    filter: blur(90px);
+}
+
+@keyframes float1 {
+    from { transform: translateY(0); }
+    to   { transform: translateY(40px); }
+}
+
+@keyframes float2 {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-40px); }
+}
+
+/* ===== Card (Glassmorphism + Floating) ===== */
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    border-radius: 22px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    animation: fadeIn 0.6s ease-out, floatCard 6s infinite ease-in-out alternate;
+}
+
+@keyframes floatCard {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-10px); }
+}
+
+/* ===== Title ===== */
+.title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-align: center;
+    letter-spacing: 0.4px;
+    margin-bottom: 18px;
+}
+
+/* ===== Alert Sukses ===== */
+.alert-success {
+    background: #d1fae5;
+    border-left: 5px solid #059669;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Input ===== */
+.input {
+    width: 100%;
+    padding: 13px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    background: #f8fafc;
+    margin-bottom: 15px;
+    transition: 0.25s;
+}
+
+.input:focus {
+    background: #fff;
+    border-color: #6366f1;
+    box-shadow: 0 0 8px rgba(99,102,241,0.35);
+    transform: translateY(-2px);
+}
+
+/* ===== Textarea ===== */
+.textarea {
+    height: 90px;
+    resize: vertical;
+}
+
+/* ===== Label ===== */
+.label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    color: #374151;
+}
+
+/* ===== File Input ===== */
+.file-input {
+    background: #eef2ff;
+    border: 2px dashed #6366f1;
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.file-input:hover {
+    background: #e0e7ff;
+    border-color: #4f46e5;
+}
+
+/* ===== Buttons ===== */
+.btn-primary,
+.btn-success {
+    display: block;
+    padding: 13px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+/* Download Button */
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59,130,246,0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(29,78,216,0.45);
+}
+
+/* Submit Button */
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16,185,129,0.35);
+}
+
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(5,150,105,0.45);
+}
+
+/* ===== Fade In ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

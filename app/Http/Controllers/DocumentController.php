@@ -3,14 +3,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Document;
-
+use Illuminate\Support\Facades\Storage;
 class DocumentController extends Controller
 {
+
     public function admin() {
     return view('admin', [
         'docs' => Document::latest()->get()
     ]);
 }
+    public function delete($id){
+    {
+        $doc = Document::findOrFail($id);
+
+        // Hapus file fisik di storage
+        if ($doc->file_path && Storage::disk('public')->exists($doc->file_path)) {
+            Storage::disk('public')->delete($doc->file_path);
+        }
+
+        // Hapus data di database
+        $doc->delete();
+
+        return back()->with('success', 'Dokumen berhasil dihapus');
+    }
+}
+
 
     public function index() {
         return view('upload');
@@ -36,5 +53,6 @@ class DocumentController extends Controller
         return view('admin', [
             'documents' => Document::orderBy('id','DESC')->get()
         ]);
+        
     }
 }
